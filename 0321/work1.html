@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>속성 연결</title>
+</head>
+
+<body>
+    <h2>속성 관련 예제</h2>
+    <div id="app">
+        <h3>이미지</h3>
+        <p v-bind:align="myAlignRight">
+            <img src="spring.png" alt="벚꽃 사진"><br>
+            직접 태그로 이미지 연결<br>
+        </p>
+        <p v-bind:align="myAlignCenter">
+            <img v-bind:src="myImg" alt="벚꽃 사진"><br>
+            v-bind로 이미지 연결<br>
+        </p>
+        <p v-bind:align="myAlignLeft">
+            <img :src="myImg" alt="벚꽃 사진"><br>
+            v-bind 생략해서 이미지 연결
+        </p>
+        <hr>
+        <h3 v-bind:align="myAlignCenter">링크</h3>
+        <p v-bind:align="myAlignCenter">    
+            <a href="https://www.naver.com">태그로 네이버 가기</a><br>
+            <a v-bind:href="myUrl">v-bind로 네이버 가기1</a><br>
+            <a :href="myUrl">v-bind로 네이버 가기2</a>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                myImg: 'spring.png',
+                myUrl: 'https://www.naver.com',
+                myAlignCenter: 'center',
+                myAlignRight: 'Right',
+                myAlignLeft: 'left'
+            }
+        })
+    </script>
+</body>
+
+</html>

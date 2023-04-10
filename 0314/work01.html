@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>데이터</title>
+    
+</head>
+
+<body>
+    <h2>Vue의 데이터</h2>
+    <div id="app">
+        <p>머시태시 : {{myText}}</p>
+        <p v-text="myText"></p>
+        <p>{{myName}}</p>
+        <p v-text="myName"></p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                myText: 'Hi!! Vue~~',
+                myName: '이채원'
+            }
+        })
+    </script>
+</body>
+
+</html>

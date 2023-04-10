@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        table {
+            width: 55%;
+            text-align: center;
+        }
+
+        table th {
+            padding: 12px;
+            border-bottom: 2px solid rgb(255, 172, 172);
+        }
+
+        table td {
+            padding: 12px;
+        }
+
+        table tr:nth-of-type(even) {
+            background-color: rgba(255, 175, 175, 0.188);
+        }
+    </style>
+    <title></title>
+</head>
+
+<body>
+    <h2>배열 데이터를 테이블로 표시하는 예제</h2>
+    <div id="app">
+        <table>
+            <thead>
+                <th v-for="item in header">
+                    {{item}}
+                </th>
+            </thead>
+            <tbody>
+                <tr v-for="line in ranking">
+                    <td v-for="item in line">
+                        {{item}}
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                header: ["프로그램언어", 2025, 2020, 2015, 2010],
+                ranking: [
+                    ['Go', 1, 10, 25, 100],
+                    ['Python', 3, 1, 2, 10],
+                    ['Java', 10, 1, 2, 5],
+                    ['C++', 15, 20, 1, 2],
+                    ['JS', 7, 5, 2, 1]
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

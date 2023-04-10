@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Uiyeun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+html {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Uiyeun;
+    line-height: 1.5;
+    font-size: 200%;
+}
+button {
+    cursor: pointer;
+    padding: 6px, 12px;
+    border-radius: 6px;
+    background-color: #ffcbcb;
+    border: 2px;
+    border-color: rgb(183, 183, 183);
+    font-family: Uiyeun;
+    font-size: 100%;
+}

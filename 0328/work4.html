@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <h2></h2>
+    <div id="app">
+        <p>{{count}}</p>
+        <button @click="countUp(1)">1씩 증가</button>
+        <button @click="countUp(3)">3씩 증가</button>
+        <button @click="countUp(10)">10씩 증가</button>
+        <button @click="countUp(100)">100씩 증가</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                countUp: function (value) {
+                    this.count += value
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
