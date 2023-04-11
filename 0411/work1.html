@@ -2,20 +2,79 @@
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    </script>
+    <style>
+        button {
+            cursor: pointer;
+            padding: 6px, 12px;
+            border-radius: 6px;
+            background-color: #ffcbcb;
+            border: 2px;
+            border-color: rgb(183, 183, 183);
+            font-family: Uiyeun;
+            font-size: 100%;
+        }
+    </style>
     <title></title>
-    
 </head>
 
 <body>
-    <h2></h2>
-    <div id="app">
+    <h2>Google Charts로 원그래프틀 그리는 예제</h2>
+    <h3>선호하는 점심 메뉴 투표</h3>
+    <div id="chart_div" style="height: 500px;"></div>
 
+    <div id="app">
+        <li v-for="(item, c) in dataArray" v-if="c>0">{{item[0]}} : {{item[1]}} <button @click="addOne(c)">한표</button>
+            <button @click="subOne(c)">한표빼기</button>
+        </li>
     </div>
+
     <script>
+        var orgdata = [
+            ['종류', '개수', { role: 'style' }],
+            ['도시락', 8, '#ffcbcb'],
+            ['갈비탕', 4, '#ffcbcb'],
+            ['오므라이스', 3, '#ffcbcb'],
+            ['짬뽕', 9, '#ffcbcb'],
+            ['비빔밥', 3, '#ffcbcb'],
+            ['메밀소바', 5, '#ffcbcb'   ],
+        ]
+
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(orgdata);
+            var options = {
+                title: "선호하는 점심", "is3D": true
+            };
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+
         new Vue({
             el: '#app',
             data: {
-                
+                dataArray: orgdata
+            },
+            methods: {
+                addOne: function (val) {
+                    var obj = this.dataArray[val];
+                    obj[1]++;
+                    this.dataArray.splice(val, 1, obj);
+                    drawChart();
+                },
+                subOne: function (val) {
+                    var obj = this.dataArray[val];
+                    if (obj[1] > 0) {
+                        obj[1]--;
+                    }
+
+                    this.dataArray.splice(val, 1, obj);
+                    drawChart();
+                }
             }
         })
     </script>

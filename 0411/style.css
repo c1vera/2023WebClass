@@ -4,13 +4,12 @@
     font-weight: normal;
     font-style: normal;
 }
-html {
+* {
     width: 80%;
     margin-right: auto;
     margin-left: auto;
     font-family: 'Uiyeun';
     line-height: 1.5;
-    font-size: 200%;
 }
 button {
     cursor: pointer;

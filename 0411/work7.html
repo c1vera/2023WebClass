@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title></title>
+
+</head>
+
+<body>
+    <h2>남은 시간을 감시하여 표시하고 0초가 되면 얼럿을 띄우는 예제</h2>
+    <div id="app">
+        <p>앞으로 {{restSec}} 초</p>
+        <button @click="startTimer">START</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                restSec: 5,
+                timerObj: null
+            },
+            methods: {
+                startTimer: function () {
+                    this.restSec = 5;
+                    this.timerObj = setInterval(() => { this.restSec-- }, 1000)
+                }
+            },
+            watch: {
+                restSec: function () {
+                    if (this.restSec <= 0) {
+                        alert("제한시간 입니다.");
+                        clearInterval(this.timerObj);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

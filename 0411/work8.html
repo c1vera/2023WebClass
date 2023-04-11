@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <title></title>
+
+</head>
+
+<body>
+    <h2>숫자가 빠르게 올라가는 애니메이션을 보여주며 값이 증가하는 input 태그 예제</h2>
+    <div id="app">
+        <p>값은 {{animeNumber}} 입니다.</p>
+        <input v-model.number="myNumber" style="padding: 10px; text-align: center;">
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                myNumber: 0,
+                tweenedNumber: 0
+            },
+            watch: {
+                myNumber: function () {
+                    TweenMax.to(this.$data, 5000, { tweenedNumber: this.myNumber })
+                }
+            },
+            computed: {
+                animeNumber: function () {
+                    return this.tweenedNumber.toFixed(0);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

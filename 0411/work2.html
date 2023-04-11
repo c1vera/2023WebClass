@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title></title>
+    
+</head>
+
+<body>
+    <h2>금액을 입력하면 소비세가 포함된 금액을 계산하는 예제</h2>
+    <div id="app">
+        <input v-model.number="price">원 X <input v-model.number="count"> 개
+        <h3>computed</h3>
+        <p>합계 {{ sum }} 원</p>
+        <p>소비세 포함 금액 {{ texIncluded }} 원 </p>
+        <hr>
+        <h3>methods</h3>
+        <p>합계 {{ sum1() }} 원</p>
+        <p>소비세 포함 금액 {{ texIncluded1() }} 원 </p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                price : 100,
+                count : 1
+            },
+            computed: {
+                sum : function(){
+                    return this.price * this.count;
+                },
+                texIncluded : function(){
+                    return this.sum * 1.08;
+                }
+            },
+            methods: {
+                sum1 : function(){
+                    return this.price * this.count;
+                },
+                texIncluded1 : function(){
+                    return this.sum * 1.08;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
